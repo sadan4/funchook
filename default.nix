@@ -52,7 +52,6 @@ stdenv.mkDerivation (finalAttrs: rec {
   installPhase = ''
     runHook preInstall
 
-    ls -alh build
     mkdir -p $out/include $out/lib
     cp -r include/* $out/include
     cp build/libfunc* $out/lib
