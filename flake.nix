@@ -21,8 +21,8 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = [
-            pkgs.funchook
+          packages = with pkgs; [
+            zydis
           ];
         };
         packages = {
