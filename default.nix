@@ -5,19 +5,27 @@
   cmake,
   gnumake,
   capstone,
-  git
+  fetchFromGitHub,
 }:
 stdenv.mkDerivation (finalAttrs: rec {
   pname = "funchook";
   name = pname;
   src = ./.;
   buildInputs = [
-    capstone
+    (capstone.overrideAttrs (
+      _: old: {
+        src = fetchFromGitHub {
+          owner = "capstone-engine";
+          repo = "capstone";
+          rev = "097c04d9413c59a58b00d4d1c8d5dc0ac158ffaa";
+          hash = "sha256-kKmL5sae9ruWGu1gas1mel9qM52qQOD+zLj8cRE3isg";
+        };
+      }
+    ))
   ];
   nativeBuildInputs = [
     cmake
     gnumake
-    git
   ];
   configurePhase = ''
     runHook preConfigure
@@ -39,7 +47,7 @@ stdenv.mkDerivation (finalAttrs: rec {
 
     runHook postBuild
   '';
-  
+
   installPhase = ''
     runHook preInstall
 
@@ -49,5 +57,5 @@ stdenv.mkDerivation (finalAttrs: rec {
     cp build/libfunc* $out/lib
 
     runHook postInstall
-    '';
+  '';
 })
