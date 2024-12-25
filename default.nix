@@ -24,7 +24,6 @@ stdenv.mkDerivation (finalAttrs: rec {
 
     mkdir build
     pushd build
-    export CAPSTONE_DIR=${capstone}
     cmake -DCMAKE_BUILD_TYPE=${buildType} -DFUNCHOOK_DISASM=capstone ..
     popd
 
