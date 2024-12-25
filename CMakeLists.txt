@@ -87,27 +87,28 @@ endfunction(add_subdirectory_pic)
 # capstone
 #
 if (DISASM_CAPSTONE)
-  FetchContent_Declare(
-    capstone
-    GIT_REPOSITORY https://github.com/capstone-engine/capstone.git
-    GIT_TAG        5.0.1
-    GIT_SHALLOW    TRUE
-  )
-  FetchContent_GetProperties(capstone)
-  if(NOT capstone_POPULATED)
-    FetchContent_Populate(capstone)
-    string(TOUPPER ${FUNCHOOK_CPU} FUNCHOOK_CPU_UPPER)
-    set(CAPSTONE_BUILD_SHARED OFF CACHE BOOL "")
-    set(CAPSTONE_BUILD_STATIC_RUNTIME OFF CACHE BOOL "")
-    set(CAPSTONE_BUILD_TESTS OFF CACHE BOOL "")
-    set(CAPSTONE_BUILD_CSTOOL OFF CACHE BOOL "")
-    set(CAPSTONE_ARCHITECTURE_DEFAULT OFF CACHE BOOL "")
-    set(CAPSTONE_${FUNCHOOK_CPU_UPPER}_SUPPORT ON CACHE BOOL "")
-    add_subdirectory_pic(${capstone_SOURCE_DIR} ${capstone_BINARY_DIR})
-  endif()
+#   FetchContent_Declare(
+#     capstone
+#     GIT_REPOSITORY https://github.com/capstone-engine/capstone.git
+#     GIT_TAG        5.0.1
+#     GIT_SHALLOW    TRUE
+#   )
+#   FetchContent_GetProperties(capstone)
+#   if(NOT capstone_POPULATED)
+#     FetchContent_Populate(capstone)
+#     string(TOUPPER ${FUNCHOOK_CPU} FUNCHOOK_CPU_UPPER)
+#     set(CAPSTONE_BUILD_SHARED OFF CACHE BOOL "")
+#     set(CAPSTONE_BUILD_STATIC_RUNTIME OFF CACHE BOOL "")
+#     set(CAPSTONE_BUILD_TESTS OFF CACHE BOOL "")
+#     set(CAPSTONE_BUILD_CSTOOL OFF CACHE BOOL "")
+#     set(CAPSTONE_ARCHITECTURE_DEFAULT OFF CACHE BOOL "")
+#     set(CAPSTONE_${FUNCHOOK_CPU_UPPER}_SUPPORT ON CACHE BOOL "")
+#     add_subdirectory_pic(${capstone_SOURCE_DIR} ${capstone_BINARY_DIR})
+#   endif()
 
   list(APPEND FUNCHOOK_DEPS capstone)
   set(DISASM capstone)
+  find_library(CAPSTONE_DIR capstone)
 endif ()
 
 #

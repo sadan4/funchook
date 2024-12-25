@@ -6,3 +6,5 @@
 *~
 /build*
 
+.cache/clangd/index
+result
