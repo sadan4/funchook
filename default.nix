@@ -4,7 +4,7 @@
   buildType ? "Release",
   cmake,
   gnumake,
-  capstone,
+  zydis,
   fetchFromGitHub,
 }:
 stdenv.mkDerivation (finalAttrs: rec {
@@ -12,16 +12,17 @@ stdenv.mkDerivation (finalAttrs: rec {
   name = pname;
   src = ./.;
   buildInputs = [
-    (capstone.overrideAttrs (
-      _: old: {
-        src = fetchFromGitHub {
-          owner = "capstone-engine";
-          repo = "capstone";
-          rev = "097c04d9413c59a58b00d4d1c8d5dc0ac158ffaa";
-          hash = "sha256-kKmL5sae9ruWGu1gas1mel9qM52qQOD+zLj8cRE3isg";
-        };
-      }
-    ))
+    # (capstone.overrideAttrs (
+    #   _: old: {
+    #     src = fetchFromGitHub {
+    #       owner = "capstone-engine";
+    #       repo = "capstone";
+    #       rev = "097c04d9413c59a58b00d4d1c8d5dc0ac158ffaa";
+    #       hash = "sha256-kKmL5sae9ruWGu1gas1mel9qM52qQOD+zLj8cRE3isg";
+    #     };
+    #   }
+    # ))
+    zydis
   ];
   nativeBuildInputs = [
     cmake
@@ -32,7 +33,7 @@ stdenv.mkDerivation (finalAttrs: rec {
 
     mkdir build
     pushd build
-    cmake -DCMAKE_BUILD_TYPE=${buildType} -DFUNCHOOK_DISASM=capstone ..
+    cmake -DCMAKE_BUILD_TYPE=${buildType} -DFUNCHOOK_DISASM=zydis ..
     popd
 
     runHook postConfigure
