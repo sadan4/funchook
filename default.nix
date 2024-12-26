@@ -5,7 +5,7 @@
   cmake,
   gnumake,
   zydis,
-  fetchFromGitHub,
+  callPackage,
 }:
 stdenv.mkDerivation (finalAttrs: rec {
   pname = "funchook";
@@ -23,10 +23,13 @@ stdenv.mkDerivation (finalAttrs: rec {
     #   }
     # ))
     zydis
+    # horror
+    (callPackage (import ./zycore.nix) {})
   ];
   nativeBuildInputs = [
     cmake
     gnumake
+    zydis
   ];
   configurePhase = ''
     runHook preConfigure
