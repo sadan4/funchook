@@ -23,7 +23,8 @@ stdenv.mkDerivation (finalAttrs: rec {
     #   }
     # ))
     zydis
-    # horror
+    # wont build outside of this repo without this
+    # reproducible builds my ass
     (callPackage (import ./zycore.nix) {})
   ];
   nativeBuildInputs = [

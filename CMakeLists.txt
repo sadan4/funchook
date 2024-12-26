@@ -140,30 +140,32 @@ if (DISASM_DISTORM)
 
   list(APPEND FUNCHOOK_DEPS distorm)
   set(DISASM distorm)
-endif ()
-
-#
-# zydis
-#
-if (DISASM_ZYDIS)
+  endif ()
+  
+  #
+  # zydis
+  #
+  if (DISASM_ZYDIS)
   # FetchContent_Declare(
-  #   Zydis
-  #   GIT_REPOSITORY https://github.com/zyantific/zydis.git
-  #   GIT_TAG        v4.1.0
-  #   GIT_SHALLOW    TRUE
-  # )
-  # FetchContent_GetProperties(Zydis)
-  # if(NOT zydis_POPULATED)
-  #   FetchContent_Populate(Zydis)
-  #   set(ZYDIS_BUILD_SHARED_LIB OFF CACHE BOOL "")
-  #   set(ZYDIS_BUILD_EXAMPLES OFF CACHE BOOL "")
-  #   set(ZYDIS_BUILD_TOOLS OFF CACHE BOOL "")
-  #   add_subdirectory_pic(${zydis_SOURCE_DIR} ${zydis_BINARY_DIR})
-  # endif()
-
-  list(APPEND FUNCHOOK_DEPS Zydis)
-  set(DISASM Zydis)
-  find_library(ZYDIS_DIR Zydis)
+    #   Zydis
+    #   GIT_REPOSITORY https://github.com/zyantific/zydis.git
+    #   GIT_TAG        v4.1.0
+    #   GIT_SHALLOW    TRUE
+    # )
+    # FetchContent_GetProperties(Zydis)
+    # if(NOT zydis_POPULATED)
+    #   FetchContent_Populate(Zydis)
+    #   set(ZYDIS_BUILD_SHARED_LIB OFF CACHE BOOL "")
+    #   set(ZYDIS_BUILD_EXAMPLES OFF CACHE BOOL "")
+    #   set(ZYDIS_BUILD_TOOLS OFF CACHE BOOL "")
+    #   add_subdirectory_pic(${zydis_SOURCE_DIR} ${zydis_BINARY_DIR})
+    # endif()
+    
+    set(DISASM Zydis)
+    find_library(ZYDIS_DIR Zydis)
+    list(APPEND FUNCHOOK_DEPS ${ZYDIS_DIR})
+    # target_link_libraries(funchook-shared PRIVATE ${ZYDIS_DIR})
+    # target_link_libraries(funchook-static PRIVATE ${ZYDIS_DIR})
 endif ()
 
 #
