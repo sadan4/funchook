@@ -87,28 +87,27 @@ endfunction(add_subdirectory_pic)
 # capstone
 #
 if (DISASM_CAPSTONE)
-#   FetchContent_Declare(
-#     capstone
-#     GIT_REPOSITORY https://github.com/capstone-engine/capstone.git
-#     GIT_TAG        5.0.1
-#     GIT_SHALLOW    TRUE
-#   )
-#   FetchContent_GetProperties(capstone)
-#   if(NOT capstone_POPULATED)
-#     FetchContent_Populate(capstone)
-#     string(TOUPPER ${FUNCHOOK_CPU} FUNCHOOK_CPU_UPPER)
-#     set(CAPSTONE_BUILD_SHARED OFF CACHE BOOL "")
-#     set(CAPSTONE_BUILD_STATIC_RUNTIME OFF CACHE BOOL "")
-#     set(CAPSTONE_BUILD_TESTS OFF CACHE BOOL "")
-#     set(CAPSTONE_BUILD_CSTOOL OFF CACHE BOOL "")
-#     set(CAPSTONE_ARCHITECTURE_DEFAULT OFF CACHE BOOL "")
-#     set(CAPSTONE_${FUNCHOOK_CPU_UPPER}_SUPPORT ON CACHE BOOL "")
-#     add_subdirectory_pic(${capstone_SOURCE_DIR} ${capstone_BINARY_DIR})
-#   endif()
+  FetchContent_Declare(
+    capstone
+    GIT_REPOSITORY https://github.com/capstone-engine/capstone.git
+    GIT_TAG        5.0.1
+    GIT_SHALLOW    TRUE
+  )
+  FetchContent_GetProperties(capstone)
+  if(NOT capstone_POPULATED)
+    FetchContent_Populate(capstone)
+    string(TOUPPER ${FUNCHOOK_CPU} FUNCHOOK_CPU_UPPER)
+    set(CAPSTONE_BUILD_SHARED OFF CACHE BOOL "")
+    set(CAPSTONE_BUILD_STATIC_RUNTIME OFF CACHE BOOL "")
+    set(CAPSTONE_BUILD_TESTS OFF CACHE BOOL "")
+    set(CAPSTONE_BUILD_CSTOOL OFF CACHE BOOL "")
+    set(CAPSTONE_ARCHITECTURE_DEFAULT OFF CACHE BOOL "")
+    set(CAPSTONE_${FUNCHOOK_CPU_UPPER}_SUPPORT ON CACHE BOOL "")
+    add_subdirectory_pic(${capstone_SOURCE_DIR} ${capstone_BINARY_DIR})
+  endif()
 
   list(APPEND FUNCHOOK_DEPS capstone)
   set(DISASM capstone)
-  find_library(CAPSTONE_DIR capstone)
 endif ()
 
 #
@@ -140,32 +139,29 @@ if (DISASM_DISTORM)
 
   list(APPEND FUNCHOOK_DEPS distorm)
   set(DISASM distorm)
-  endif ()
-  
-  #
-  # zydis
-  #
-  if (DISASM_ZYDIS)
-  # FetchContent_Declare(
-    #   Zydis
-    #   GIT_REPOSITORY https://github.com/zyantific/zydis.git
-    #   GIT_TAG        v4.1.0
-    #   GIT_SHALLOW    TRUE
-    # )
-    # FetchContent_GetProperties(Zydis)
-    # if(NOT zydis_POPULATED)
-    #   FetchContent_Populate(Zydis)
-    #   set(ZYDIS_BUILD_SHARED_LIB OFF CACHE BOOL "")
-    #   set(ZYDIS_BUILD_EXAMPLES OFF CACHE BOOL "")
-    #   set(ZYDIS_BUILD_TOOLS OFF CACHE BOOL "")
-    #   add_subdirectory_pic(${zydis_SOURCE_DIR} ${zydis_BINARY_DIR})
-    # endif()
-    
-    set(DISASM Zydis)
-    find_library(ZYDIS_DIR Zydis)
-    list(APPEND FUNCHOOK_DEPS ${ZYDIS_DIR})
-    # target_link_libraries(funchook-shared PRIVATE ${ZYDIS_DIR})
-    # target_link_libraries(funchook-static PRIVATE ${ZYDIS_DIR})
+endif ()
+
+#
+# zydis
+#
+if (DISASM_ZYDIS)
+  FetchContent_Declare(
+    Zydis
+    GIT_REPOSITORY https://github.com/zyantific/zydis.git
+    GIT_TAG        v4.1.0
+    GIT_SHALLOW    TRUE
+  )
+  FetchContent_GetProperties(Zydis)
+  if(NOT zydis_POPULATED)
+    FetchContent_Populate(Zydis)
+    set(ZYDIS_BUILD_SHARED_LIB OFF CACHE BOOL "")
+    set(ZYDIS_BUILD_EXAMPLES OFF CACHE BOOL "")
+    set(ZYDIS_BUILD_TOOLS OFF CACHE BOOL "")
+    add_subdirectory_pic(${zydis_SOURCE_DIR} ${zydis_BINARY_DIR})
+  endif()
+
+  list(APPEND FUNCHOOK_DEPS Zydis)
+  set(DISASM Zydis)
 endif ()
 
 #
