@@ -1,0 +1,1 @@
+// all these defines will be replaced with makefile
