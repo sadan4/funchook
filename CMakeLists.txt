@@ -147,9 +147,7 @@ endif ()
 if (DISASM_ZYDIS)
   FetchContent_Declare(
     Zydis
-    GIT_REPOSITORY https://github.com/zyantific/zydis.git
-    GIT_TAG        v4.1.0
-    GIT_SHALLOW    TRUE
+    SOURCE_DIR $ENV{ZYDIS_SRC}
   )
   FetchContent_GetProperties(Zydis)
   if(NOT zydis_POPULATED)
