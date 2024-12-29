@@ -1,8 +1,5 @@
 {
   stdenv,
-  # Release, Debug, RelWithDebInfo, MinSizeRel
-  buildType ? "Release",
-  cmake,
   gnumake,
   zydis,
   callPackage,
@@ -39,28 +36,28 @@ stdenv.mkDerivation (
       (callPackage (import ./zycore.nix) { })
     ];
     nativeBuildInputs = [
-      cmake
       gnumake
       zydis
     ];
-    configurePhase = ''
-      runHook preConfigure
+    # configurePhase = ''
+    #   runHook preConfigure
 
-      mkdir build
-      pushd build
-      export ZYDIS_SRC=${zydisSrc}
-      cmake -DCMAKE_BUILD_TYPE=${buildType} -DFUNCHOOK_DISASM=zydis ..
-      popd
+    #   mkdir build
+    #   pushd build
+    #   export DISASM=Zydis
+    #   cmake -DCMAKE_BUILD_TYPE=${buildType} -DFUNCHOOK_DISASM=zydis ..
+    #   popd
 
-      runHook postConfigure
-    '';
+    #   runHook postConfigure
+    # '';
 
     buildPhase = ''
       runHook preBuild
 
-      pushd build
+      export DISASM=Zydis
+      ./files.sh
+      ./defines.sh
       make -j
-      popd
 
       runHook postBuild
     '';
@@ -70,7 +67,8 @@ stdenv.mkDerivation (
 
       mkdir -p $out/include $out/lib
       cp -r include/* $out/include
-      cp build/libfunc* $out/lib
+      rm dist/*.o
+      cp -r dist/* $out/lib
 
       runHook postInstall
     '';

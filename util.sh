@@ -2,7 +2,7 @@
 set -e
 get_os() {
     if [[ $(uname) == "Linux" ]]; then
-        echo "Linux"
+        echo "unix"
         return 0
     fi
 }

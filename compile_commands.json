@@ -1,0 +1,87 @@
+[
+  {
+    "arguments": [
+      "/nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116/bin/gcc",
+      "-c",
+      "-I",
+      "./include",
+      "-D",
+      "_GNU_SOURCE=1",
+      "-D",
+      "DISASM_ZYDIS",
+      "-D",
+      "SIZEOF_VOID_P=8",
+      "src/funchook.c"
+    ],
+    "directory": "/home/meyer/dev/nix/funchook",
+    "file": "/home/meyer/dev/nix/funchook/src/funchook.c"
+  },
+  {
+    "arguments": [
+      "/nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116/bin/gcc",
+      "-c",
+      "-I",
+      "./include",
+      "-D",
+      "_GNU_SOURCE=1",
+      "-D",
+      "DISASM_ZYDIS",
+      "-D",
+      "SIZEOF_VOID_P=8",
+      "src/arch_x86.c"
+    ],
+    "directory": "/home/meyer/dev/nix/funchook",
+    "file": "/home/meyer/dev/nix/funchook/src/arch_x86.c"
+  },
+  {
+    "arguments": [
+      "/nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116/bin/gcc",
+      "-c",
+      "-I",
+      "./include",
+      "-D",
+      "_GNU_SOURCE=1",
+      "-D",
+      "DISASM_ZYDIS",
+      "-D",
+      "SIZEOF_VOID_P=8",
+      "src/os_unix.c"
+    ],
+    "directory": "/home/meyer/dev/nix/funchook",
+    "file": "/home/meyer/dev/nix/funchook/src/os_unix.c"
+  },
+  {
+    "arguments": [
+      "/nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116/bin/gcc",
+      "-c",
+      "-I",
+      "./include",
+      "-D",
+      "_GNU_SOURCE=1",
+      "-D",
+      "DISASM_ZYDIS",
+      "-D",
+      "SIZEOF_VOID_P=8",
+      "src/disasm_Zydis.c"
+    ],
+    "directory": "/home/meyer/dev/nix/funchook",
+    "file": "/home/meyer/dev/nix/funchook/src/disasm_Zydis.c"
+  },
+  {
+    "arguments": [
+      "/nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116/bin/gcc",
+      "-c",
+      "-I",
+      "./include",
+      "-D",
+      "_GNU_SOURCE=1",
+      "-D",
+      "DISASM_ZYDIS",
+      "-D",
+      "SIZEOF_VOID_P=8",
+      "src/prehook-x86_64-sysv.S"
+    ],
+    "directory": "/home/meyer/dev/nix/funchook",
+    "file": "/home/meyer/dev/nix/funchook/src/prehook-x86_64-sysv.S"
+  }
+]
