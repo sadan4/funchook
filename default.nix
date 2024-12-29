@@ -68,7 +68,7 @@ stdenv.mkDerivation (
 
       mkdir -p $out/include $out/lib
       cp -r include/* $out/include
-      rm dist/*.o
+      rm dist/*.o || :
       cp -r dist/* $out/lib
 
       runHook postInstall

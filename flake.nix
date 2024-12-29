@@ -23,7 +23,6 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             zydis
-            glibc.static
           ];
           ZYDIS_LOC = "${pkgs.zydis}/lib/libZydis.a";
         };
