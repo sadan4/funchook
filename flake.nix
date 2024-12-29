@@ -20,6 +20,11 @@
         };
       in
       {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            funchook
+          ];
+        };
         packages = {
           default = pkgs.funchook;
         };
