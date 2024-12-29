@@ -20,12 +20,6 @@
         };
       in
       {
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            zydis
-          ];
-          ZYDIS_LOC = "${pkgs.zydis}/lib/libZydis.a";
-        };
         packages = {
           default = pkgs.funchook;
         };

@@ -1,7 +1,6 @@
 {
   stdenv,
   gnumake,
-  zydis,
   callPackage,
   fetchFromGitHub,
 }:
@@ -30,14 +29,12 @@ stdenv.mkDerivation (
       #     };
       #   }
       # ))
-      zydis
       # wont build outside of this repo without this
       # reproducible builds my ass
-      (callPackage (import ./zycore.nix) { })
+      # (callPackage (import ./zycore.nix) { })
     ];
     nativeBuildInputs = [
       gnumake
-      zydis
     ];
     # configurePhase = ''
     #   runHook preConfigure

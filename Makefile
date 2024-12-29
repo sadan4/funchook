@@ -8,6 +8,6 @@ clean:
 	rmdir dist || :
 all: clean
 	mkdir dist
-	gcc -shared -fPIC -Wall -I ./include $(Defines) $(Sources) -l:libZydis.a -o dist/libfunchook.so
+	gcc -shared -fPIC -Wall -I ./include -I src -I src/Zydis $(Defines) $(Sources) -o dist/libfunchook.so
 	# mv *.o dist
 	# ar rcs dist/libfunchook.a dist/*.o $(ZYDIS_LOC)
