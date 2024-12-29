@@ -10,4 +10,4 @@ all: clean
 	mkdir dist
 	gcc -fPIC -Wall -I ./include $(Defines) $(Sources) -c
 	mv *.o dist
-	ar rcs dist/libfunchook.a dist/*.o
+	ar rcs dist/libfunchook.a dist/*.o $(ZYDIS_LOC)

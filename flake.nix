@@ -25,6 +25,7 @@
             zydis
             glibc.static
           ];
+          ZYDIS_LOC = "${pkgs.zydis}/lib/libZydis.a";
         };
         packages = {
           default = pkgs.funchook;
