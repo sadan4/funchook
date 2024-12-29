@@ -1,9 +1,8 @@
 #!/usr/bin/env -S make -f
 export DISASM ?= Zydis
-Defines=$(shell ./defines.sh)
-Sources=$(shell ./files.sh)
+Defines=$(shell bash ./defines.sh)
+Sources=$(shell bash ./files.sh)
 .DEFAULT_GOAL := all
-export LDFLAGS=-static -fPIC
 clean:
 	rm -r dist || :
 	rmdir dist || :

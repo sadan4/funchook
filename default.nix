@@ -55,8 +55,9 @@ stdenv.mkDerivation (
       runHook preBuild
 
       export DISASM=Zydis
-      ./files.sh
-      ./defines.sh
+      bash ./files.sh
+      bash ./defines.sh
+      echo $SHELL
       make -j
 
       runHook postBuild
